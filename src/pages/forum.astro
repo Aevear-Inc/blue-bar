@@ -22,15 +22,17 @@ declare global {
     data-sitekey="6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW" 
     data-callback='onSubmit' 
     data-action='submit'>Submit</button>
-    <!-- <button type="submit">Send Email</button> -->
 </form>
 <script src="https://www.google.com/recaptcha/api.js"></script>
-<!-- Load Google reCAPTCHA v3 script -->
-<!-- <script src="https://www.google.com/recaptcha/api.js?render=6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW"></script> -->
+
 <script>
     function onSubmit(token) {
-     document.getElementById("emailForm").submit();
-   }
+        const form = document.getElementById("emailForm") as HTMLFormElement;
+        if (form) {
+            form.submit();
+        }
+    }
+
     const form = document.getElementById('emailForm');
     if (form) {
         form.addEventListener('submit', async (event) => {
@@ -39,7 +41,7 @@ declare global {
             grecaptcha.ready(function() {
                 grecaptcha.execute('6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW', {action: 'submit'}).then(function(token: string) {
                     // Add your logic to submit to your server here
-                    const formData = new FormData(event.target as HTMLFormElement);
+                    const formData = new FormData(form);
                     formData.append('recaptcha', token);
 
                     fetch('/.netlify/functions/sendEmail', {
@@ -58,5 +60,3 @@ declare global {
         });
     }
 </script>
-
-
