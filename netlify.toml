@@ -1,4 +1,4 @@
 [[headers]]
-   for = "/*"
-   [headers.values]
-      Access-Control-Allow-Origin = "*"
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; ..."
