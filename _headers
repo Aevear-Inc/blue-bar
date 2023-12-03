@@ -1,2 +1,2 @@
 /*
-  Access-Control-Allow-Origin: *
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; connect-src 'self'; img-src 'self'; style-src 'self';
