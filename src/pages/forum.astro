@@ -34,7 +34,7 @@ const message = document.getElementById('message').value;
                         headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify({email,  message, token }),
+    body: JSON.stringify({email,message,token}),
                     })
                     .then(response => response.json())
                     .then(data => {
