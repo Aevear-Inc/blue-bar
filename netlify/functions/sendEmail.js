@@ -19,7 +19,7 @@ try {
 const { email, message, recaptcha } = data;
 
   // Verify reCAPTCHA
-  const recaptchaSecret = Netlify.env.RECAPTCHA_SECRET_KEY;
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
   try {
     const recaptchaResponse = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptcha}`);
     if (!recaptchaResponse.data.success || recaptchaResponse.data.score < 0.5) {
@@ -30,11 +30,11 @@ const { email, message, recaptcha } = data;
   }
 
   // SendGrid setup
-  sgMail.setApiKey(Netlify.env.SENDGRID_API_KEY);
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const msg = {
     to: email,
-    from: Netlify.env.SENDGRID_SENDER_EMAIL,
+    from: process.env.SENDGRID_SENDER_EMAIL,
     subject: 'Message from Astro Forum',
     text: message,
   };
