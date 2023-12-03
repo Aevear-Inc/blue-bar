@@ -27,7 +27,7 @@
                     const formData = new FormData(event.target);
                     formData.append('recaptcha', token);
 
-                    fetch('/.netlify/functions/sendEmail', {
+                    fetch('/netlify/functions/sendEmail', {
                         method: 'POST',
                         body: formData
                     })
