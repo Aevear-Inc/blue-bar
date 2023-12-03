@@ -28,14 +28,15 @@
 
 const email =  document.getElementById('email').value;
 const message = document.getElementById('message').value;
-
-                    fetch('/.netlify/functions/sendEmail', {
-                        method: 'POST',
-                        headers: {
+const recaptcha = token
+fetch('/.netlify/functions/sendEmail', {
+    method: 'POST',
+    headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify({email,message,token}),
-                    })
+    body: JSON.stringify({ email, message, recaptcha }),
+})
+
                     .then(response => response.json())
                     .then(data => {
                         alert(data.message);
