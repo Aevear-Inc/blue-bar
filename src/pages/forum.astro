@@ -26,15 +26,15 @@ declare global {
 <script src="https://www.google.com/recaptcha/api.js"></script>
 
 <script>
-    function onSubmit(token) {
-        const form = document.getElementById("emailForm") as HTMLFormElement;
-        if (form) {
+    function onSubmit(token: string) {
+        const form = document.getElementById("emailForm");
+        if (form instanceof HTMLFormElement) {
             form.submit();
         }
     }
 
     const form = document.getElementById('emailForm');
-    if (form) {
+    if (form instanceof HTMLFormElement) {
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
 
