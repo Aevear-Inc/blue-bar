@@ -27,7 +27,7 @@ declare global {
 <script async src="https://www.google.com/recaptcha/api.js"></script>
 
 <script>
-    function onSubmit() {
+    window.onsubmit = function() {
     const form = document.getElementById('emailForm');
     if (form instanceof HTMLFormElement) {
         form.addEventListener('submit', async (event) => {
