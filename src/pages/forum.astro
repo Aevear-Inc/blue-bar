@@ -26,7 +26,7 @@
                     // Add your logic to submit to your server here
                     let data = new FormData(form);
                     data.append('recaptcha', token);
-console.log(data);
+console.log(data.entries());
                     fetch('/.netlify/functions/sendEmail', {
                         method: 'POST',
                         body: data
