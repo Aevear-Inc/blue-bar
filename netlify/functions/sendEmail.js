@@ -33,10 +33,10 @@ exports.handler = async function(event, context){
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const msg = {
-    to: email,
-    from: process.env.SENDGRID_SENDER_EMAIL,
+    to: process.env.SENDGRID_SENDER_EMAIL,
+    from: 'yuri.alves@aevea.gg',
     subject: 'Message from Astro Forum',
-    text: 'User Email: ' + email + ' ' +message,
+    text: 'User Email: ' + email + ' '  +message,
   };
 
   try {
