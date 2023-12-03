@@ -8,7 +8,7 @@ exports.handler = async function(event, context){
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  let data;
+let data;
 try {
   data = JSON.parse(event.body);
 } catch (error) {
@@ -16,7 +16,7 @@ try {
   return { statusCode: 400, body: 'Cannot parse request body' };
 }
 
-const { email, message, recaptcha } = data;
+const {email,message,recaptcha} = data;
 
   // Verify reCAPTCHA
   const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
