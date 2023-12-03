@@ -30,7 +30,7 @@ declare global {
             event.preventDefault();
 
             grecaptcha.ready(function() {
-                grecaptcha.execute('6LfZyiQpAAAAADMUcrc0gtIidH', {action: 'submit'}).then(function(token) {
+                grecaptcha.execute('6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW', {action: 'submit'}).then(function(token) {
                     // Add your logic to submit to your server here
                     const formData = new FormData(event.target);
                     formData.append('recaptcha', token);
@@ -53,4 +53,4 @@ declare global {
 </script>
 
 <!-- Load Google reCAPTCHA v3 script -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LfZyiQpAAAAADMUcrc0gtIidH"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW"></script>
