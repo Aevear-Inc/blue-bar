@@ -21,19 +21,13 @@ declare global {
     <textarea id="message" name="message" required></textarea>
     <button class="g-recaptcha" 
     data-sitekey="6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW" 
-    data-callback='onSubmit' 
+    data-callback='onSubmit()' 
     data-action='submit'>Submit</button>
 </form>
 <script async src="https://www.google.com/recaptcha/api.js"></script>
 
 <script>
-    function onSubmit(token: string) {
-        const form = document.getElementById("emailForm");
-        if (form instanceof HTMLFormElement) {
-            form.submit();
-        }
-    }
-
+    function onSubmit() {
     const form = document.getElementById('emailForm');
     if (form instanceof HTMLFormElement) {
         form.addEventListener('submit', async (event) => {
@@ -60,5 +54,6 @@ declare global {
             });
         });
     }
+}
 </script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
