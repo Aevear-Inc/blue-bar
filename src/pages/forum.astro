@@ -21,7 +21,7 @@ declare global {
     <textarea id="message" name="message" required></textarea>
     <button class="g-recaptcha" 
     data-sitekey="6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW" 
-    data-callback='onSubmit()' 
+    data-callback='onSubmit' 
     data-action='submit'>Submit</button>
 </form>
 <script async src="https://www.google.com/recaptcha/api.js"></script>
@@ -34,7 +34,7 @@ declare global {
             event.preventDefault();
 
             grecaptcha.ready(function() {
-                grecaptcha.execute('6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW', {action: 'submit'}).then(function(token: string) {
+                grecaptcha.execute('6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW', {action: 'submit'}).then(function(token) {
                     // Add your logic to submit to your server here
                     const formData = new FormData(form);
                     formData.append('recaptcha', token);
