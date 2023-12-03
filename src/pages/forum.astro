@@ -1,3 +1,12 @@
+---
+// Import useState for managing form state
+import { useState } from 'react';
+
+// Declare grecaptcha as a global variable
+declare global {
+    var grecaptcha: any;
+}
+---
 <link rel="preconnect" href="https://www.google.com">
 <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
 <!-- Forum Page Content -->
@@ -10,24 +19,20 @@
 
     <label for="message">Message:</label>
     <textarea id="message" name="message" required></textarea>
-    <button class="g-recaptcha" 
-    data-sitekey="6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW" 
-    data-callback='onSubmit' 
-    data-action='submit'>Submit</button>
+    <button type="submit">Send Email</button>
 </form>
 <script async src="https://www.google.com/recaptcha/api.js"></script>
 
 <script is:inline>
-    function onSubmit() {
     const form = document.getElementById('emailForm');
-    if (form instanceof HTMLFormElement) {
+    if (form) {
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
 
             grecaptcha.ready(function() {
-                grecaptcha.execute('6LfZyiQpAAAAADMUcrc0gtIidH-ayxwv2dzAKWXW', {action: 'submit'}).then(function(token) {
+                grecaptcha.execute('6LfZyiQpAAAAADMUcrc0gtIidH', {action: 'submit'}).then(function(token) {
                     // Add your logic to submit to your server here
-                    const formData = new FormData(form);
+                    const formData = new FormData(event.target);
                     formData.append('recaptcha', token);
 
                     fetch('/.netlify/functions/sendEmail', {
@@ -45,6 +50,7 @@
             });
         });
     }
-}
 </script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<!-- Load Google reCAPTCHA v3 script -->
+<script src="https://www.google.com/recaptcha/api.js?render=6LfZyiQpAAAAADMUcrc0gtIidH"></script>
