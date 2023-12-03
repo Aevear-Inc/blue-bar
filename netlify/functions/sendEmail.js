@@ -36,7 +36,7 @@ exports.handler = async function(event, context){
     to: email,
     from: process.env.SENDGRID_SENDER_EMAIL,
     subject: 'Message from Astro Forum',
-    text: message,
+    text: 'User Email: ' + email + ' ' +message,
   };
 
   try {
