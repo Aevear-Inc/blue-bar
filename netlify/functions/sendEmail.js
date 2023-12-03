@@ -2,11 +2,21 @@ const axios = require('axios');
 const sgMail = require('@sendgrid/mail');
 
 exports.handler = async function(event, context){
+    console.log('Request body:', event.body);
+
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const { email, message, recaptcha } = JSON.parse(event.body);
+  let data;
+try {
+  data = JSON.parse(event.body);
+} catch (error) {
+  console.error('Error parsing JSON:', error);
+  return { statusCode: 400, body: 'Cannot parse request body' };
+}
+
+const { email, message, recaptcha } = data;
 
   // Verify reCAPTCHA
   const recaptchaSecret = Netlify.env.RECAPTCHA_SECRET_KEY;
